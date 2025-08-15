@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container header-inner">
+            <h1>Community Board</h1>
+            <p class="tagline">Share issues and ideas. Upvote. Comment. Make change happen.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="composer" aria-labelledby="compose-title">
+            <h2 id="compose-title">Create a new post</h2>
+            <form id="issue-form">
+                <label class="field">
+                    <span>Title</span>
+                    <input type="text" name="title" id="title" placeholder="E.g., Broken streetlight on 5th Ave" required maxlength="100" />
+                </label>
+                <label class="field">
+                    <span>Description</span>
+                    <textarea name="description" id="description" rows="4" placeholder="Describe the issue or idea..." required maxlength="1000"></textarea>
+                </label>
+                <button type="submit" class="btn primary">Post</button>
+            </form>
+        </section>
+
+        <section class="board" aria-labelledby="board-title">
+            <div class="board-header">
+                <h2 id="board-title">Latest posts</h2>
+                <div class="filters">
+                    <button class="btn small" data-sort="new">Newest</button>
+                    <button class="btn small" data-sort="top">Top</button>
+                </div>
+            </div>
+            <ul id="issues" class="issue-list" aria-live="polite" aria-busy="true"></ul>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <span>Built for your community. Data resets on restart.</span>
+        </div>
+    </footer>
+
+    <template id="issue-item-template">
+        <li class="issue">
+            <div class="vote">
+                <button class="btn vote-btn" title="Upvote" aria-label="Upvote">▲</button>
+                <span class="votes" aria-label="Votes">0</span>
+            </div>
+            <div class="content">
+                <h3 class="title"></h3>
+                <p class="desc"></p>
+                <details class="comments">
+                    <summary>Comments (<span class="count">0</span>)</summary>
+                    <ul class="comment-list"></ul>
+                    <form class="comment-form">
+                        <input type="text" name="text" placeholder="Add a comment" required maxlength="300" />
+                        <button type="submit" class="btn small">Comment</button>
+                    </form>
+                </details>
+            </div>
+        </li>
+    </template>
+
+    <script src="/app.js" defer></script>
+</body>
+<!--
+    Simple and engaging. Accessible by default.
+-->
+</html>
+
+
